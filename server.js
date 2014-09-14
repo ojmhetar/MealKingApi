@@ -30,7 +30,7 @@ router.get('/', function(req, res) {
 app.use('/api', router);
 
 var mongoose = require('mongoose'); 
-mongoose.connect('mongodb://localhost/MealKing');
+mongoose.connect('mongodb://iamking:kingo@ds035260.mongolab.com:35260/mealking');
 
 
 var router = express.Router(); 				// get an instance of the express Router
@@ -56,7 +56,7 @@ router.route('/recpie')
 		recpie.steps = req.body.steps; 
 		recpie.ingredients = req.body.ingredients; 
 		recpie.comments = req.body.comments; 
-		
+
 
 		recpie.save(function(err){
 			if(err)
