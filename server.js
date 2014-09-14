@@ -6,7 +6,7 @@ var express    = require('express'); 		// call express
 var app        = express(); 				// define our app using express
 var bodyParser = require('body-parser');
 
-// var Recpie =  require('../MealKingApi/models/Recpie.js');
+var Recpie =  require('./models/Recpie.js');
 // configure app to use bodyParser()
 // this will let us get the data from a POST
 app.use(bodyParser.urlencoded({ extended: true }));
