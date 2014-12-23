@@ -6,7 +6,11 @@ var express    = require('express'); 		// call express
 var app        = express(); 				// define our app using express
 var bodyParser = require('body-parser');
 
+<<<<<<< HEAD
 var Recipe =  require('./models/Recipe.js');
+=======
+var Recpie =  require('./models/Recpie.js');
+>>>>>>> 5667e72c132c4a935dc1be3c0d0d0656e9ded696
 // configure app to use bodyParser()
 // this will let us get the data from a POST
 app.use(bodyParser.urlencoded({ extended: true }));
@@ -42,6 +46,10 @@ router.use(function(req, res, next) {
 	next(); // make sure we go to the next routes and don't stop here
 });
 
+router.route('/home')
+	.get(function(req, res) {
+		 res.render('opener', { title: 'The index page!' })
+	});
 
 // more routes for our API will happen here
 router.route('/recipe')
