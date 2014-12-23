@@ -6,7 +6,7 @@ var express    = require('express'); 		// call express
 var app        = express(); 				// define our app using express
 var bodyParser = require('body-parser');
 
-var Recpie =  require('./models/Recpie.js');
+var Recipe =  require('./models/Recipe.js');
 // configure app to use bodyParser()
 // this will let us get the data from a POST
 app.use(bodyParser.urlencoded({ extended: true }));
@@ -20,7 +20,7 @@ var router = express.Router(); 				// get an instance of the express Router
 
 // test route to make sure everything is working (accessed at GET http://localhost:8080/api)
 router.get('/', function(req, res) {
-	res.json({ message: 'hooray! welcome to our api!' });	
+	res.json({ message: 'Welcome to the Meal King API. By Two Beards and Fro!' });	
 });
 
 // more routes for our API will happen here
@@ -31,7 +31,7 @@ app.use('/api', router);
 
 var mongoose = require('mongoose'); 
 mongoose.connect('mongodb://iamking:kingo@ds035260.mongolab.com:35260/mealking');
-
+//mongoose.connect('127.0.0.1:27017'); 
 
 var router = express.Router(); 				// get an instance of the express Router
 
@@ -44,63 +44,63 @@ router.use(function(req, res, next) {
 
 
 // more routes for our API will happen here
-router.route('/recpie')
+router.route('/recipe')
 
 	.post(function(req, res){
-		var recpie = new Recpie();
-		recpie.name = req.body.name;
-		recpie.minutes = req.body.minutes; 
-		recpie.image = req.body.image; 
-		recpie.failure = req.body.failure; 
-		recpie.favorites = req.body.favorites; 
-		recpie.steps = req.body.steps; 
-		recpie.ingredients = req.body.ingredients; 
-		recpie.comments = req.body.comments; 
+		var recipe = new Recipe();
+		recipe.name = req.body.name;
+		recipe.minutes = req.body.minutes; 
+		recipe.image = req.body.image; 
+		recipe.failure = req.body.failure; 
+		recipe.favorites = req.body.favorites; 
+		recipe.steps = req.body.steps; 
+		recipe.ingredients = req.body.ingredients; 
+		recipe.comments = req.body.comments; 
 
 
-		recpie.save(function(err){
+		recipe.save(function(err){
 			if(err)
 				res.send(err);
 
-			res.json({ message: 'Recpie Added!' });
+			res.json({ message: 'Recipe Added!' });
 		});
 	})
 	.get(function(req, res) {
-		Recpie.find(function(err, recpies) {
+		Recipe.find(function(err, recipes) {
 			if (err)
 				res.send(err);
 
-			res.json(recpies);
+			res.json(recipes);
 		});
 });
 
-router.route('/recpie/:recpie_id')
+router.route('/recipe/:recipe_id')
 	.get(function(req, res) {
-		Recpie.findById(req.params.recpie_id, function(err, recpie) {
+		Recipe.findById(req.params.recipe_id, function(err, recipe) {
 			if (err)
 				res.send(err);
-			res.json(recpie);
+			res.json(recipe);
 		});
 	})
 	.put(function(req, res) {
-		Recpie.findById(req.params.recpie_id, function(err, recpie) {
+		Recipe.findById(req.params.recipe_id, function(err, recipe) {
 			if (err)
 				res.send(err);
-			recpie.name = req.body.name; 
+			recipe.name = req.body.name; 
 
-			recpie.save(function(err) {
+			recipe.save(function(err) {
 				if (err)
 					res.send(err);
 
-				res.json({message: 'Recpie updated.'});
+				res.json({message: 'Recipe updated.'});
 			});
 		});
 
 	})
 	.delete(function(req, res) {
-		Recpie.remove({
-			_id: req.params.recpie_id
-		}, function(err, recpie) {
+		Recipe.remove({
+			_id: req.params.recipe_id
+		}, function(err, recipe) {
 			if (err)
 				res.send(err);
 
