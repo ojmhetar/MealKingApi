@@ -6,11 +6,7 @@ var express    = require('express'); 		// call express
 var app        = express(); 				// define our app using express
 var bodyParser = require('body-parser');
 
-<<<<<<< HEAD
 var Recipe =  require('./models/Recipe.js');
-=======
-var Recpie =  require('./models/Recpie.js');
->>>>>>> 5667e72c132c4a935dc1be3c0d0d0656e9ded696
 // configure app to use bodyParser()
 // this will let us get the data from a POST
 app.use(bodyParser.urlencoded({ extended: true }));
@@ -35,7 +31,7 @@ app.use('/api', router);
 
 var mongoose = require('mongoose'); 
 mongoose.connect('mongodb://iamking:kingo@ds035260.mongolab.com:35260/mealking');
-//mongoose.connect('127.0.0.1:27017'); 
+//mongoose.connect('127.0.0.1:27017/test'); 
 
 var router = express.Router(); 				// get an instance of the express Router
 
