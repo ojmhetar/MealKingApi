@@ -80,14 +80,14 @@ router.route('/recipe')
 
 router.route('/recipe/:recipe_id')
 	.get(function(req, res) {
-		Recipe.findById(req.params.recipe_id, function(err, recipe) {
+		Recipe.findOne({'name': req.params.recipe_id }, function(err, recipe) {
 			if (err)
 				res.send(err);
 			res.json(recipe);
 		});
 	})
 	.put(function(req, res) {
-		Recipe.findById(req.params.recipe_id, function(err, recipe) {
+		Recipe.findOne({'name': req.params.recipe_id}, function(err, recipe) {
 			if (err)
 				res.send(err);
 			recipe.name = req.body.name; 
