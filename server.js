@@ -70,11 +70,11 @@ router.route('/recipe')
 		});
 	})
 	.get(function(req, res) {
-		Recipe.find(function(err, recipes) {
+		Recipe.find(function(err, recipe) {
 			if (err)
 				res.send(err);
 
-			res.json(recipes);
+			res.json(recipe);
 		});
 });
 
