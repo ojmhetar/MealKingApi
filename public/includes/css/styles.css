@@ -1,0 +1,74 @@
+.controls { 
+  margin: 10px;
+}
+
+/*
+body{
+    font-family: 'Open Sans', sans-serif;
+    background: url(../../images/torg.png) no-repeat center center fixed;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+
+}
+*/
+
+
+
+   /* --------------------------------------
+      Typography
+      -------------------------------------- */
+
+
+
+   /* --------------------------------------
+      Navbar
+      -------------------------------------- */
+
+
+      
+   /* --------------------------------------
+      Carousel
+      -------------------------------------- */
+
+
+
+   /* --------------------------------------
+      Global Styles
+      -------------------------------------- */
+
+
+   /* --------------------------------------
+      Media Queries
+/* Extra small devices (phones, less than 768px) */
+/* No media query since this is the default in Bootstrap*/
+
+/* Small devices (tablets, 768px and up) *
+@media (min-width: @screen-sm-min) {
+         background-image: url(../../images/tokyo.jpg);
+
+}
+
+/* Medium devices (desktops, 992px and up) *
+@media (min-width: @screen-md-min) {
+
+}
+
+/* Large devices (large desktops, 1200px and up) *
+@media (min-width: @screen-lg-min) {
+
+}
+      -------------------------------------- */
+
+   /* Portrait & landscape phone */7
+
+   /* Landscape phone to portrait tablet */
+
+   /* Large desktop */
+
+
+
+
+
+

@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		
+		<title>Meal King Database Interface</title>
+		<meta name="description" content="">
+		
+		<!-- Mobile viewport optimized -->
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+		
+		<!-- Bootstrap CSS -->
+		<link href="bootstrap/css/bootstrap.min.css" rel="stylesheet">
+		<link href="includes/css/bootstrap-glyphicons.css" rel="stylesheet">
+		
+		<!-- Custom CSS -->
+		<link href="includes/css/styles.css" rel="stylesheet">
+		
+		<!-- Google Fonts CSS -->
+		<link href='http://fonts.googleapis.com/css?family=Open+Sans:300,600,400' rel='stylesheet' type='text/css'>
+		
+		<!-- Include Modernizr in the head, before any other Javascript -->
+		<script src="includes/js/modernizr-2.6.2.min.js"></script>
+	</head>
+    
+    
+<body>
+	
+
+<center>
+<div class="row col-lg-12">
+
+	<form class="form-horizontal" id="postRecipe" name="addrecipe" method="post" action="/api/recipe">
+	        
+			<div class="controls">
+				<input id="name" type="text" placeholder="Name of the yum yum recipe" name="name"/>
+			</div> 
+        	
+			<div class="controls">
+				<input id="minutes" type="text" placeholder="Minutes it'll take to cook" name="minutes"/>
+			</div>
+        	
+            <div class="controls">
+				<input id="image" type="text" placeholder="Picture that shows how tasty it is" name="image"/>
+			</div>
+        
+            <div class="controls">
+				<input id="failure" type="text" placeholder="How likely am I to burn my house down?" name="failure"/>
+			</div>    
+
+			<div class="controls">
+				<input id="ingredients" type="text" placeholder="Ingredients! Bam!" name="ingredients"/>
+			</div>
+
+			<div class="controls">
+				<input id="steps" type="text" placeholder="Steps, how do I get from nothing to everything?" name="steps"/>
+			</div>
+
+			<div class="controls">
+				<input id="comments" type="text" placeholder="Comments??" name="comments"/>
+			</div>
+
+        
+   			<button type="submit" class="btn btn-default btn-lg center" id="form-button">Submit</button>
+	</form>
+</div>
+</center>    
+    
+    
+	<script src="http://code.jquery.com/jquery.js"></script>
+	
+	<!-- If no online access, fallback to our hardcoded version of jQuery -->
+	<script>window.jQuery || document.write('<script src="includes/js/jquery-1.8.2.min.js"><\/script>')</script>
+	
+	<!-- Bootstrap JS -->
+	<script src="bootstrap/js/bootstrap.min.js"></script>
+	
+	<!-- Custom JS -->
+	<script src="includes/js/script.js"></script>
+	</body>
+</html>
+
+

@@ -1,53 +1,56 @@
-// BASE SETUP
-// =============================================================================
+/* The Meal King API 
+ * Two Beards and Fro 
+ */
 
-// call the packages we need
-var express    = require('express'); 		// call express
-var app        = express(); 				// define our app using express
+//Packages used
+var express    = require('express'); 		
+var app        = express(); 				
+var path 	   = require('path');
 var bodyParser = require('body-parser');
+var mongoose = require('mongoose'); 
 
+//Schema desired for data base
 var Recipe =  require('./models/Recipe.js');
+
+//App settings, include views into path, and use ejs as templating engine
+app.set('views', path.join(__dirname, 'views'));
+app.set('view engine', 'ejs');
+app.use(express.static(path.join(__dirname, 'public')));
+
 // configure app to use bodyParser()
 // this will let us get the data from a POST
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 
-var port = process.env.PORT || 3000; 		// set our port
+//Express Router, Read 4.0 documentation or above only!
+var port = process.env.PORT || 3000; 		
+var router = express.Router(); 
 
-// ROUTES FOR OUR API
-// =============================================================================
-var router = express.Router(); 				// get an instance of the express Router
+//Makes all the routes prefixed with /api
+app.use('/api', router);
 
-// test route to make sure everything is working (accessed at GET http://localhost:8080/api)
+//The database connection 
+//mongoose.connect('mongodb://iamking:kingo@ds035260.mongolab.com:35260/mealking');
+mongoose.connect('127.0.0.1:27017/test'); 
+
+//Default page 
 router.get('/', function(req, res) {
 	res.json({ message: 'Welcome to the Meal King API. By Two Beards and Fro!' });	
 });
 
-// more routes for our API will happen here
+//Page to add recipes with a "nicer UI"
+app.get('/addrecipe', function(req, res) {
+	res.render('recipeadd'); 
+}); 
 
-// REGISTER OUR ROUTES -------------------------------
-// all of our routes will be prefixed with /api
-app.use('/api', router);
-
-var mongoose = require('mongoose'); 
-mongoose.connect('mongodb://iamking:kingo@ds035260.mongolab.com:35260/mealking');
-//mongoose.connect('127.0.0.1:27017/test'); 
-
-var router = express.Router(); 				// get an instance of the express Router
+//The actual API here 
 
 // middleware to use for all requests
 router.use(function(req, res, next) {
-	// do logging
 	console.log('Request sent.');
 	next(); // make sure we go to the next routes and don't stop here
 });
 
-router.route('/home')
-	.get(function(req, res) {
-		 res.render('opener', { title: 'The index page!' })
-	});
-
-// more routes for our API will happen here
 router.route('/recipe')
 
 	.post(function(req, res){
@@ -112,11 +115,6 @@ router.route('/recipe/:recipe_id')
 		});
 	});
 
-// REGISTER OUR ROUTES -------------------------------
-// all of our routes will be prefixed with /api
-app.use('/api', router);
 
-// START THE SERVER
-// =============================================================================
 app.listen(port);
-console.log('Activated on port ' + port);
+console.log('The MEAL KING API is running on port ' + port);
